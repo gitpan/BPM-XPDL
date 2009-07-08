@@ -1,0 +1,18 @@
+
+======== version history of BPM::XPDL
+
+version 0.03:
+	- renamed module from Business::XPDL into BPM::XPDL
+	- copyright statement
+	- format manual-pages with OODoc
+	- release on CPAN
+
+version 0.02: Tue Apr 28 13:08:46 CEST 2009
+	- enabled pod testing in test environment
+	- added tests to t/10minimal.t
+	- added create(), tested in t/11create.t
+	- use XML::Compile::Tester
+	- convert with tests in t/4*
+
+version 0.01: Fri Apr 24 16:26:16 CEST 2009
+	- initial
