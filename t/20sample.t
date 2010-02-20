@@ -61,4 +61,4 @@ close OUT;
 
 ok(1, 'dump successful');
 
-#print $xpdl->template('PERL', 'xpdl:Package');
+print $xpdl->template('PERL', 'Package');

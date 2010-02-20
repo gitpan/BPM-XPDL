@@ -1,27 +1,19 @@
 --- #YAML:1.0
-name:               BPM-XPDL
-version:            0.03
-abstract:           BPM/XPDL standard
-author:
+name:                BPM-XPDL
+version:             0.04
+abstract:            BPM/XPDL standard
+license:             perl
+author:              
     - Mark Overmeer
-license:            perl
-distribution_type:  module
-configure_requires:
-    ExtUtils::MakeMaker:  0
-build_requires:
-    ExtUtils::MakeMaker:  0
-requires:
-    Log::Report:          0.23
-    Test::More:           0.54
-    Test::Pod:            1.00
-    XML::Compile:         1.05
-    XML::Compile::Cache:  0.91
-    XML::Compile::Tester:  0.05
-no_index:
-    directory:
-        - t
-        - inc
-generated_by:       ExtUtils::MakeMaker version 6.52
+generated_by:        ExtUtils::MakeMaker version 6.42
+distribution_type:   module
+requires:     
+    Log::Report:                   0.23
+    Test::More:                    0.54
+    Test::Pod:                     1.00
+    XML::Compile:                  1.12
+    XML::Compile::Cache:           0.91
+    XML::Compile::Tester:          0.05
 meta-spec:
-    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
-    version:  1.4
+    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
+    version: 1.3

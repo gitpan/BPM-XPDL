@@ -98,7 +98,7 @@ BPM::XPDL-E<gt>B<new>(OPTIONS)
 
 . allow_undeclared => BOOLEAN
 
-. any_element => CODE|'TAKE_ALL'|'SKIP_ALL'|'ATTEMPT'
+. any_element => CODE|'TAKE_ALL'|'SKIP_ALL'|'ATTEMPT'|'SLOPPY'
 
 . block_namespace => NAMESPACE|TYPE|HASH|CODE|ARRAY
 
@@ -428,8 +428,8 @@ provided data.
 
 =head1 SEE ALSO
 
-This module is part of BPM-XPDL distribution version 0.03,
-built on July 08, 2009. Website: F<http://perl.overmeer.net>
+This module is part of BPM-XPDL distribution version 0.04,
+built on February 20, 2010. Website: F<http://perl.overmeer.net>
 
 =head1 ACKNOWLEDGEMENTS
 
@@ -438,7 +438,7 @@ this software.
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (c) 2009 by Mark Overmeer. For other contributors see ChangeLog.
+Copyright (c) 2009-2010 by Mark Overmeer. For other contributors see ChangeLog.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

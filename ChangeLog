@@ -1,7 +1,11 @@
 
 ======== version history of BPM::XPDL
 
-version 0.03:
+version 0.04: Sat Feb 20 23:52:21 CET 2010
+	- fixed problem due to changes in XML::Compile.
+	  Reported by [Kiffin Gish]
+
+version 0.03: Wed Jul  8 09:20:55 CEST 2009
 	- renamed module from Business::XPDL into BPM::XPDL
 	- copyright statement
 	- format manual-pages with OODoc

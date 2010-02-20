@@ -1,4 +1,4 @@
-# Copyrights 2009 by Mark Overmeer.
+# Copyrights 2009-2010 by Mark Overmeer.
 #  For other contributors see ChangeLog.
 # See the manual pages for details on the licensing terms.
 # Pod stripped from pm file by OODoc 1.06.
@@ -7,7 +7,7 @@ use strict;
 
 package BPM::XPDL;
 use vars '$VERSION';
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 use base 'XML::Compile::Cache';
 
@@ -101,8 +101,9 @@ sub init($)
 
         # this trick is needed because the StartMode element became an
         # attribute in the same structure
-        $self->addKeyRewrite( { StartMode  => 'dep_StartMode'
-                              , FinishMode => 'dep_FinishMode'} );
+        $self->addKeyRewrite(
+          { pack_type(NS_XPDL_10, 'StartMode' ) => 'dep_StartMode'
+          , pack_type(NS_XPDL_10, 'FinishMode') => 'dep_FinishMode'} );
     }
 
     if($version ge '2.1')
@@ -187,10 +188,12 @@ sub convert10to20($)
         foreach my $act (@{$acts->{Activity} || []})
         {   # Start/Finish mode from element -> attribute
             if(my $sm = delete $act->{dep_StartMode})
-            {   ($act->{StartMode}, undef) = %$sm; # only 1 key-value pair!
+            {   (my $mode, undef) = %$sm; # only 1 key-value pair!
+                $act->{StartMode} = $mode;
             }
             if(my $fm = delete $act->{dep_FinishMode})
-            {   ($act->{FinishMode}, undef) = %$fm;
+            {   (my $mode, undef) = %$fm;
+                $act->{dep_FinishMode} = $mode;
             }
 
             # BlockId -> ActivitySetId
