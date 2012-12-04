@@ -1,6 +1,10 @@
 
 ======== version history of BPM::XPDL
 
+version 0.90: Tue Dec  4 09:27:42 CET 2012
+	- fix regression-test, which originates in a fix in XML::Compile
+	  itself.  [cpantesters]
+
 version 0.04: Sat Feb 20 23:52:21 CET 2010
 	- fixed problem due to changes in XML::Compile.
 	  Reported by [Kiffin Gish]

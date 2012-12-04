@@ -99,8 +99,6 @@ is($type, pack_type(NS_XPDL_20, 'Package'));
 my $xml20 = $xpdl->create($data)->toString(1);
 #warn $xml20;
 
-# Probably, the FormalParameter/Application does not match the 2.0
-# definition (yet), which keeps it in version 1.0
 compare_xml($xml20, <<'_CONVERTED');
 <?xml version="1.0" encoding="UTF-8"?>
 <Package
@@ -122,17 +120,17 @@ compare_xml($xml20, <<'_CONVERTED');
           </DataType>
         </FormalParameter>
       </FormalParameters>
-      <xpdl10:Applications>
-        <xpdl10:Application Id="appl1">
-          <xpdl10:FormalParameters>
-            <xpdl10:FormalParameter Id="p2" Mode="IN">
-              <xpdl10:DataType>
-                <xpdl10:BasicType Type="INTEGER"/>
-              </xpdl10:DataType>
-            </xpdl10:FormalParameter>
-          </xpdl10:FormalParameters>
-        </xpdl10:Application>
-      </xpdl10:Applications>
+      <Applications>
+        <Application Id="appl1">
+          <FormalParameters>
+            <FormalParameter Id="p2" Mode="IN">
+              <DataType>
+                <BasicType Type="INTEGER"/>
+              </DataType>
+            </FormalParameter>
+          </FormalParameters>
+        </Application>
+      </Applications>
       <ActivitySets>
         <ActivitySet Id="set1">
           <Transitions>

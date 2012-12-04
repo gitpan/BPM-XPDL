@@ -1,13 +1,13 @@
-# Copyrights 2009-2010 by Mark Overmeer.
+# Copyrights 2009-2012 by [Mark Overmeer].
 #  For other contributors see ChangeLog.
 # See the manual pages for details on the licensing terms.
-# Pod stripped from pm file by OODoc 1.06.
+# Pod stripped from pm file by OODoc 2.00.
 use warnings;
 use strict;
 
 package BPM::XPDL;
 use vars '$VERSION';
-$VERSION = '0.04';
+$VERSION = '0.90';
 
 use base 'XML::Compile::Cache';
 
@@ -59,18 +59,11 @@ sub init($)
     $args->{allow_undeclared} = 1
         unless exists $args->{allow_undeclared};
 
-    $args->{opts_readers} = { @{$args->{opts_readers}} }
-        if ref $args->{opts_readers} eq 'ARRAY';
-    $args->{opts_readers}{mixed_elements} = 'XML_NODE';
-
-    $args->{opts_rw}      = { @{$args->{opts_rw}} }
-        if ref $args->{opts_rw} eq 'ARRAY';
-    $args->{opts_rw}{sloppy_floats}   = 1;  # only small floats
-    $args->{opts_rw}{sloppy_integers} = 1;  # only small ints
-
-    $args->{any_element}            ||= 'ATTEMPT';
-
     $self->SUPER::init($args);
+
+    $self->anyElement('ATTEMPT');
+    $self->addCompileOptions(RW => sloppy_floats => 1, sloppy_integers => 1);
+    $self->addCompileOptions(READERS => mixed_elements => 'XML_NODE');
 
     my $version = $args->{version}
         or error __x"XPDL object requires an explicit version";
