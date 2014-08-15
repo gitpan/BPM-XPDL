@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 # Convert to xpdl2.0
 use warnings;
 use strict;

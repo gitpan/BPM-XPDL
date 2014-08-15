@@ -1,3 +1,5 @@
+=encoding utf8
+
 =head1 NAME
 
 BPM::XPDL - XPDL access
@@ -33,6 +35,8 @@ You can read and L<create()|BPM::XPDL/"Other"> these XPDL files with one simpe m
 All versions of the specification are supported. It will convert older
 versions into newer versions if you want to.  See L<from()|BPM::XPDL/"Constructors">.
 
+Extends L<"DESCRIPTION" in XML::Compile::Cache|XML::Compile::Cache/"DESCRIPTION">.
+ 
 =head2 Limitiations
 
 The XPDL files may contain additional external type definitions, which
@@ -45,13 +49,17 @@ this module.
 
 =head1 METHODS
 
+Extends L<"METHODS" in XML::Compile::Cache|XML::Compile::Cache/"METHODS">.
+ 
 =head2 Constructors
 
+Extends L<"Constructors" in XML::Compile::Cache|XML::Compile::Cache/"Constructors">.
+ 
 =over 4
 
-=item $obj-E<gt>B<from>(XMLDATA, OPTIONS)
+=item $obj-E<gt>B<from>($xmldata, %options)
 
-=item BPM::XPDL-E<gt>B<from>(XMLDATA, OPTIONS)
+=item BPM::XPDL-E<gt>B<from>($xmldata, %options)
 
 Read an XML message, in any format supported by L<XML::Compile> method
 C<dataToXML()>: string, file, filehandle, and more.  Returned is a list
@@ -74,11 +82,11 @@ or
 
   my ($type, $data) = BPM::XPDL->from('data.xml');
 
-=item BPM::XPDL-E<gt>B<new>(OPTIONS)
+=item BPM::XPDL-E<gt>B<new>(%options)
 
  -Option            --Defined in          --Default
   allow_undeclared    XML::Compile::Cache   <false>
-  any_element         XML::Compile::Cache   'SKIP_ALL'
+  any_element         XML::Compile::Cache   'ATTEMPT'
   block_namespace     XML::Compile::Schema  []
   hook                XML::Compile::Schema  undef
   hooks               XML::Compile::Schema  []
@@ -102,13 +110,13 @@ or
 
 =item block_namespace => NAMESPACE|TYPE|HASH|CODE|ARRAY
 
-=item hook => ARRAY-WITH-HOOKDATA | HOOK
+=item hook => HOOK|ARRAY
 
-=item hooks => ARRAY-OF-HOOK
+=item hooks => ARRAY
 
 =item ignore_unused_tags => BOOLEAN|REGEXP
 
-=item key_rewrite => HASH|CODE|ARRAY-of-HASH-and-CODE
+=item key_rewrite => HASH|CODE|ARRAY
 
 =item opts_readers => HASH|ARRAY-of-PAIRS
 
@@ -137,181 +145,203 @@ within one document.
 
 =head2 Accessors
 
+Extends L<"Accessors" in XML::Compile::Cache|XML::Compile::Cache/"Accessors">.
+ 
 =over 4
 
-=item $obj-E<gt>B<addCompileOptions>(['READERS'|'WRITERS'|'RW'], OPTIONS)
+=item $obj-E<gt>B<addHook>($hook|LIST|undef)
 
-See L<XML::Compile::Cache/"Accessors">
+Inherited, see L<XML::Compile::Schema/"Accessors">
 
-=item $obj-E<gt>B<addHook>(HOOKDATA|HOOK|undef)
+=item $obj-E<gt>B<addHooks>( $hook, [$hook, ...] )
 
-See L<XML::Compile::Schema/"Accessors">
+Inherited, see L<XML::Compile::Schema/"Accessors">
 
-=item $obj-E<gt>B<addHooks>(HOOK, [HOOK, ...])
+=item $obj-E<gt>B<addKeyRewrite>($predef|CODE|HASH, ...)
 
-See L<XML::Compile::Schema/"Accessors">
+Inherited, see L<XML::Compile::Schema/"Accessors">
 
-=item $obj-E<gt>B<addKeyRewrite>(PREDEF|CODE|HASH, ...)
+=item $obj-E<gt>B<addSchemaDirs>(@directories|$filename)
 
-See L<XML::Compile::Schema/"Accessors">
+=item BPM::XPDL-E<gt>B<addSchemaDirs>(@directories|$filename)
 
-=item $obj-E<gt>B<addSchemaDirs>(DIRECTORIES|FILENAME)
+Inherited, see L<XML::Compile/"Accessors">
 
-=item BPM::XPDL-E<gt>B<addSchemaDirs>(DIRECTORIES|FILENAME)
+=item $obj-E<gt>B<addSchemas>($xml, %options)
 
-See L<XML::Compile/"Accessors">
-
-=item $obj-E<gt>B<addSchemas>(XML, OPTIONS)
-
-See L<XML::Compile::Schema/"Accessors">
+Inherited, see L<XML::Compile::Schema/"Accessors">
 
 =item $obj-E<gt>B<addTypemap>(PAIR)
 
-See L<XML::Compile::Schema/"Accessors">
+Inherited, see L<XML::Compile::Schema/"Accessors">
 
 =item $obj-E<gt>B<addTypemaps>(PAIRS)
 
-See L<XML::Compile::Schema/"Accessors">
+Inherited, see L<XML::Compile::Schema/"Accessors">
 
-=item $obj-E<gt>B<allowUndeclared>([BOOLEAN])
+=item $obj-E<gt>B<addXsiType>( [HASH|ARRAY|LIST] )
 
-See L<XML::Compile::Cache/"Accessors">
+Inherited, see L<XML::Compile::Cache/"Accessors">
+
+=item $obj-E<gt>B<allowUndeclared>( [BOOLEAN] )
+
+Inherited, see L<XML::Compile::Cache/"Accessors">
 
 =item $obj-E<gt>B<anyElement>('ATTEMPT'|'SLOPPY'|'SKIP_ALL'|'TAKE_ALL'|CODE)
 
-See L<XML::Compile::Cache/"Accessors">
+Inherited, see L<XML::Compile::Cache/"Accessors">
 
-=item $obj-E<gt>B<blockNamespace>(NAMESPACE|TYPE|HASH|CODE|ARRAY)
+=item $obj-E<gt>B<blockNamespace>($ns|$type|HASH|CODE|ARRAY)
 
-See L<XML::Compile::Schema/"Accessors">
+Inherited, see L<XML::Compile::Schema/"Accessors">
 
-=item $obj-E<gt>B<hooks>()
+=item $obj-E<gt>B<hooks>( [<'READER'|'WRITER'>] )
 
-See L<XML::Compile::Schema/"Accessors">
+Inherited, see L<XML::Compile::Schema/"Accessors">
 
 =item $obj-E<gt>B<namespace>()
 
-=item $obj-E<gt>B<prefix>(PREFIX)
+=item $obj-E<gt>B<typemap>( [HASH|ARRAY|PAIRS] )
 
-See L<XML::Compile::Cache/"Accessors">
+Inherited, see L<XML::Compile::Cache/"Accessors">
 
-=item $obj-E<gt>B<prefixFor>(URI)
+=item $obj-E<gt>B<useSchema>( $schema, [$schema, ...] )
 
-See L<XML::Compile::Cache/"Accessors">
-
-=item $obj-E<gt>B<prefixed>(TYPE)
-
-See L<XML::Compile::Cache/"Accessors">
-
-=item $obj-E<gt>B<prefixes>([PAIRS|ARRAY|HASH])
-
-See L<XML::Compile::Cache/"Accessors">
-
-=item $obj-E<gt>B<typemap>([HASH|ARRAY|PAIRS])
-
-See L<XML::Compile::Cache/"Accessors">
-
-=item $obj-E<gt>B<useSchema>(SCHEMA, [SCHEMA])
-
-See L<XML::Compile::Schema/"Accessors">
+Inherited, see L<XML::Compile::Schema/"Accessors">
 
 =item $obj-E<gt>B<version>()
 
-=item $obj-E<gt>B<xsiType>([HASH|ARRAY|LIST])
+=back
 
-See L<XML::Compile::Cache/"Accessors">
+=head2 Prefix management
+
+Extends L<"Prefix management" in XML::Compile::Cache|XML::Compile::Cache/"Prefix management">.
+ 
+=over 4
+
+=item $obj-E<gt>B<addPrefixes>( [PAIRS|ARRAY|HASH] )
+
+Inherited, see L<XML::Compile::Cache/"Prefix management">
+
+=item $obj-E<gt>B<learnPrefixes>($node)
+
+Inherited, see L<XML::Compile::Cache/"Prefix management">
+
+=item $obj-E<gt>B<prefix>($prefix)
+
+Inherited, see L<XML::Compile::Cache/"Prefix management">
+
+=item $obj-E<gt>B<prefixFor>($uri)
+
+Inherited, see L<XML::Compile::Cache/"Prefix management">
+
+=item $obj-E<gt>B<prefixed>( $type|<$ns,$local> )
+
+Inherited, see L<XML::Compile::Cache/"Prefix management">
+
+=item $obj-E<gt>B<prefixes>( [$params] )
+
+Inherited, see L<XML::Compile::Cache/"Prefix management">
 
 =back
 
 =head2 Compilers
 
+Extends L<"Compilers" in XML::Compile::Cache|XML::Compile::Cache/"Compilers">.
+ 
 =over 4
 
-=item $obj-E<gt>B<compile>(('READER'|'WRITER'), TYPE, OPTIONS)
+=item $obj-E<gt>B<addCompileOptions>( ['READERS'|'WRITERS'|'RW'], %options )
 
-See L<XML::Compile::Schema/"Compilers">
+Inherited, see L<XML::Compile::Cache/"Compilers">
 
-=item $obj-E<gt>B<compileAll>(['READERS'|'WRITERS'|'RW', [NAMESPACE]])
+=item $obj-E<gt>B<compile>( <'READER'|'WRITER'>, $type, %options )
 
-See L<XML::Compile::Cache/"Compilers">
+Inherited, see L<XML::Compile::Schema/"Compilers">
 
-=item $obj-E<gt>B<dataToXML>(NODE|REF-XML-STRING|XML-STRING|FILENAME|FILEHANDLE|KNOWN)
+=item $obj-E<gt>B<compileAll>( ['READERS'|'WRITERS'|'RW', [$ns]] )
 
-=item BPM::XPDL-E<gt>B<dataToXML>(NODE|REF-XML-STRING|XML-STRING|FILENAME|FILEHANDLE|KNOWN)
+Inherited, see L<XML::Compile::Cache/"Compilers">
 
-See L<XML::Compile/"Compilers">
+=item $obj-E<gt>B<dataToXML>($node|REF-XML|XML-STRING|$filename|$fh|$known)
 
-=item $obj-E<gt>B<initParser>(OPTIONS)
+=item BPM::XPDL-E<gt>B<dataToXML>($node|REF-XML|XML-STRING|$filename|$fh|$known)
 
-=item BPM::XPDL-E<gt>B<initParser>(OPTIONS)
+Inherited, see L<XML::Compile/"Compilers">
 
-See L<XML::Compile/"Compilers">
+=item $obj-E<gt>B<initParser>(%options)
 
-=item $obj-E<gt>B<reader>(TYPE|NAME, OPTIONS)
+=item BPM::XPDL-E<gt>B<initParser>(%options)
 
-See L<XML::Compile::Cache/"Compilers">
+Inherited, see L<XML::Compile/"Compilers">
 
-=item $obj-E<gt>B<template>('XML'|'PERL'|'TREE', ELEMENT, OPTIONS)
+=item $obj-E<gt>B<reader>($type|$name, %options)
 
-See L<XML::Compile::Schema/"Compilers">
+Inherited, see L<XML::Compile::Cache/"Compilers">
 
-=item $obj-E<gt>B<writer>(TYPE|NAME)
+=item $obj-E<gt>B<template>( <'XML'|'PERL'|'TREE'>, $element, %options )
 
-See L<XML::Compile::Cache/"Compilers">
+Inherited, see L<XML::Compile::Schema/"Compilers">
+
+=item $obj-E<gt>B<writer>($type|$name)
+
+Inherited, see L<XML::Compile::Cache/"Compilers">
 
 =back
 
 =head2 Administration
 
+Extends L<"Administration" in XML::Compile::Cache|XML::Compile::Cache/"Administration">.
+ 
 =over 4
 
-=item $obj-E<gt>B<declare>('READER'|'WRITER'|'RW', TYPE|ARRAY-of-TYPES, OPTIONS)
+=item $obj-E<gt>B<declare>( <'READER'|'WRITER'|'RW'>, <$type|ARRAY>, %options )
 
-See L<XML::Compile::Cache/"Administration">
+Inherited, see L<XML::Compile::Cache/"Administration">
 
-=item $obj-E<gt>B<doesExtend>(EXTTYPE, BASETYPE)
+=item $obj-E<gt>B<doesExtend>($exttype, $basetype)
 
-See L<XML::Compile::Schema/"Administration">
+Inherited, see L<XML::Compile::Schema/"Administration">
 
 =item $obj-E<gt>B<elements>()
 
-See L<XML::Compile::Schema/"Administration">
+Inherited, see L<XML::Compile::Schema/"Administration">
 
-=item $obj-E<gt>B<findName>(NAME)
+=item $obj-E<gt>B<findName>($name)
 
-See L<XML::Compile::Cache/"Administration">
+Inherited, see L<XML::Compile::Cache/"Administration">
 
-=item $obj-E<gt>B<findSchemaFile>(FILENAME)
+=item $obj-E<gt>B<findSchemaFile>($filename)
 
-=item BPM::XPDL-E<gt>B<findSchemaFile>(FILENAME)
+=item BPM::XPDL-E<gt>B<findSchemaFile>($filename)
 
-See L<XML::Compile/"Administration">
+Inherited, see L<XML::Compile/"Administration">
 
-=item $obj-E<gt>B<importDefinitions>(XMLDATA, OPTIONS)
+=item $obj-E<gt>B<importDefinitions>($xmldata, %options)
 
-See L<XML::Compile::Schema/"Administration">
+Inherited, see L<XML::Compile::Schema/"Administration">
 
-=item $obj-E<gt>B<knownNamespace>(NAMESPACE|PAIRS)
+=item $obj-E<gt>B<knownNamespace>($ns|PAIRS)
 
-=item BPM::XPDL-E<gt>B<knownNamespace>(NAMESPACE|PAIRS)
+=item BPM::XPDL-E<gt>B<knownNamespace>($ns|PAIRS)
 
-See L<XML::Compile/"Administration">
+Inherited, see L<XML::Compile/"Administration">
 
 =item $obj-E<gt>B<namespaces>()
 
-See L<XML::Compile::Schema/"Administration">
+Inherited, see L<XML::Compile::Schema/"Administration">
 
-=item $obj-E<gt>B<printIndex>([FILEHANDLE], OPTIONS)
+=item $obj-E<gt>B<printIndex>( [$fh], %options )
 
-See L<XML::Compile::Cache/"Administration">
+Inherited, see L<XML::Compile::Cache/"Administration">
 
 =item $obj-E<gt>B<types>()
 
-See L<XML::Compile::Schema/"Administration">
+Inherited, see L<XML::Compile::Schema/"Administration">
 
-=item $obj-E<gt>B<walkTree>(NODE, CODE)
+=item $obj-E<gt>B<walkTree>($node, CODE)
 
-See L<XML::Compile/"Administration">
+Inherited, see L<XML::Compile/"Administration">
 
 =back
 
@@ -319,7 +349,7 @@ See L<XML::Compile/"Administration">
 
 =over 4
 
-=item $obj-E<gt>B<create>(DATA)
+=item $obj-E<gt>B<create>($data)
 
 Pass a correctly constructed Perl data-structure, which maps to a
 xpdl:Package type, and it will produce XML for it (returns an
@@ -334,10 +364,18 @@ provided data.
 
 =back
 
+=head1 DETAILS
+
+Extends L<"DETAILS" in XML::Compile::Cache|XML::Compile::Cache/"DETAILS">.
+ 
+=head1 DESCRIPTIONS
+
+Extends L<"DESCRIPTIONS" in XML::Compile::Cache|XML::Compile::Cache/"DESCRIPTIONS">.
+ 
 =head1 SEE ALSO
 
-This module is part of BPM-XPDL distribution version 0.90,
-built on December 04, 2012. Website: F<http://perl.overmeer.net>
+This module is part of BPM-XPDL distribution version 0.91,
+built on August 15, 2014. Website: F<http://perl.overmeer.net>
 
 =head1 ACKNOWLEDGEMENTS
 
@@ -346,7 +384,7 @@ this software.
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (c) 2009-2012 by [Mark Overmeer]. For other contributors see ChangeLog.
+Copyright (c) 2009-2014 by [Mark Overmeer]. For other contributors see ChangeLog.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

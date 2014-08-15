@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 # Convert to xpdl2.1
 use warnings;
 use strict;
@@ -80,6 +80,7 @@ compare_xml($xml21, <<'_CONVERTED');
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://www.wfmc.org/2008/XPDL2.1"
    xmlns:xpdl10="http://www.wfmc.org/2002/XPDL1.0"
+   xmlns:xpdl20="http://www.wfmc.org/2004/XPDL2.0alpha"
    Id="1" Name="test conversion">
   <PackageHeader>
     <XPDLVersion>2.1</XPDLVersion>

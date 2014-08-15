@@ -1,13 +1,13 @@
-# Copyrights 2009-2012 by [Mark Overmeer].
+# Copyrights 2009-2014 by [Mark Overmeer].
 #  For other contributors see ChangeLog.
 # See the manual pages for details on the licensing terms.
-# Pod stripped from pm file by OODoc 2.00.
+# Pod stripped from pm file by OODoc 2.01.
 use warnings;
 use strict;
 
 package BPM::XPDL;
 use vars '$VERSION';
-$VERSION = '0.90';
+$VERSION = '0.91';
 
 use base 'XML::Compile::Cache';
 
@@ -79,7 +79,7 @@ sub init($)
 
     my $prefix_keys = $self->{prefixed} = delete $args->{prefix_keys};
 
-    $self->prefixes(%{$info->{prefixes}});
+    $self->addPrefixes($info->{prefixes});
     $self->addKeyRewrite('PREFIXES(xpdl)') if $prefix_keys;
 
     (my $xsd = __FILE__) =~ s!\.pm!/xsd!;
@@ -88,7 +88,7 @@ sub init($)
     # support deprecated versions
     if($version gt '1.0')   # $version is a version label, not number
     {   trace "loading deprecated xpdl 1.0";
-        $self->prefixes(xpdl10 => NS_XPDL_10);
+        $self->addPrefixes(xpdl10 => NS_XPDL_10);
         push @xsds, glob "$xsd/xpdl-1.0/*";
         $self->addKeyRewrite('PREFIXES(xpdl10)') if $prefix_keys;
 
@@ -101,7 +101,7 @@ sub init($)
 
     if($version ge '2.1')
     {   trace "loading deprecated xpdl 2.0";
-        $self->prefixes(xpdl20 => NS_XPDL_20);
+        $self->addPrefixes(xpdl20 => NS_XPDL_20);
         push @xsds, glob "$xsd/xpdl-2.0/*";
         $self->addKeyRewrite('PREFIXES(xpdl20)') if $prefix_keys;
     }

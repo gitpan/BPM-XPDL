@@ -4,10 +4,10 @@ use 5.008;
 
 WriteMakefile
  ( NAME	 	=> 'BPM::XPDL'
- , VERSION	=> '0.90'
+ , VERSION	=> '0.91'
  , PREREQ_PM    =>
-   { XML::Compile         => '1.30'
-   , XML::Compile::Cache  => '0.99'
+   { XML::Compile         => '1.45'
+   , XML::Compile::Cache  => '0.995'
    , XML::Compile::Tester => '0.05'
    , Log::Report          => '0.23'
 

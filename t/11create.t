@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 # First example XPDL script from Interapy, but now create it.
 use warnings;
 use strict;

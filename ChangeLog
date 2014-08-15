@@ -1,6 +1,15 @@
 
 ======== version history of BPM::XPDL
 
+version 0.91: Fri Aug 15 09:51:22 CEST 2014
+	Fixes:
+	- changes in XML::Compile caused a slightly different output
+	  in the tests [cpantesters]
+
+	Improvements:
+	- use ::Cache::addPrefixes()
+	- changed documentation style
+
 version 0.90: Tue Dec  4 09:27:42 CET 2012
 	- fix regression-test, which originates in a fix in XML::Compile
 	  itself.  [cpantesters]

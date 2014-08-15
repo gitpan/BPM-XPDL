@@ -1,5 +1,5 @@
-=== README for BPM-XPDL version 0.90
-=   Generated on Tue Dec  4 09:28:14 2012 by OODoc 2.00
+=== README for BPM-XPDL version 0.91
+=   Generated on Fri Aug 15 09:51:28 2014 by OODoc 2.01
 
 There are various ways to install this module:
 
@@ -9,16 +9,16 @@ There are various ways to install this module:
  (2) if you use Windows, have a look at http://ppm.activestate.com/
 
  (3) if you have downloaded this module manually (as root/administrator)
-       gzip -d BPM-XPDL-0.90.tar.gz
-       tar -xf BPM-XPDL-0.90.tar
-       cd BPM-XPDL-0.90
+       gzip -d BPM-XPDL-0.91.tar.gz
+       tar -xf BPM-XPDL-0.91.tar
+       cd BPM-XPDL-0.91
        perl Makefile.PL
        make          # optional
        make test     # optional
        make install
 
 For usage, see the included manual-pages or
-    http://search.cpan.org/dist/BPM-XPDL-0.90/
+    http://search.cpan.org/dist/BPM-XPDL-0.91/
 
 Please report problems to
     http://rt.cpan.org/Dist/Display.html?Queue=BPM-XPDL
