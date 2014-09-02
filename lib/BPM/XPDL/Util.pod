@@ -26,8 +26,8 @@ C<NS_XPDL_21>.
 
 =head1 SEE ALSO
 
-This module is part of BPM-XPDL distribution version 0.91,
-built on August 15, 2014. Website: F<http://perl.overmeer.net>
+This module is part of BPM-XPDL distribution version 0.92,
+built on September 02, 2014. Website: F<http://perl.overmeer.net>
 
 =head1 ACKNOWLEDGEMENTS
 

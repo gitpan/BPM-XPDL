@@ -1,6 +1,10 @@
 
 ======== version history of BPM::XPDL
 
+version 0.92: Tue Sep  2 09:33:30 CEST 2014
+	Fixes:
+	- revert fix of previous release: XML::Compile improved again.
+
 version 0.91: Fri Aug 15 09:51:22 CEST 2014
 	Fixes:
 	- changes in XML::Compile caused a slightly different output
